@@ -39,6 +39,8 @@ class Menu:
         self.option=""
 
     
+
+    
 menu = Menu()
 menu.show_options_and_choose()
 print(menu.option)
