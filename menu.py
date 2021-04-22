@@ -9,6 +9,7 @@ class Menu:
 
     def show_options(self, value):
         if value < 0 :
-        
-
-
+            print("malo")
+    
+    
+     

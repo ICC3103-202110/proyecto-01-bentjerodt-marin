@@ -1,14 +1,17 @@
-from players import Player
+from player import Player
+from menu import Menu
+from cards import Cards
 
+players = []
 def generate_players():
     for i in range(ask_n_players()):
-         name = input(f"Insert name player {i+1}: ")
-         players.append(Player(name))
+        name = input(f"Insert name player {i+1}: ")
+        players.append(Player(name))
 
 def ask_n_players():
     while True: 
         try:
-            n = int(input("Inseret number of players (3 or 4): ")) 
+            n = int(input("Insert number of players (3 or 4): ")) 
 
         except ValueError:
             print("NUMBER MUST BE 3 OR 4")
@@ -21,17 +24,21 @@ def ask_n_players():
             break
     print()
     return n
+def Show_players():
+        print("\nPlayers:")
+        print ("Number - Name - Coins - Cards")
+        for (i, _) in enumerate(players):
+            print(f"{i+1}: {players[i].name} {players[i].coins} {players[i].cards} ")
+
 
 def main():
     print()
     generate_players()
-    print()
-
-    for i in players:
-        print(i.name)
-
+    Cards.Deal(players, Cards.cards_list, Cards.cards_hidden)
+    Show_players()
     pass
 
-players = []
 
-main()   
+
+if __name__ == "__main__":
+    main()   
