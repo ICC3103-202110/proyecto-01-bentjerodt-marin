@@ -14,7 +14,7 @@ class Game:
     def ask_n_players(self):
         while True: 
             try:
-                self.number_of_players = int(input("Inseret number of players (3 or 4): ")) 
+                self.number_of_players = int(input("\nInseret number of players (3 or 4): ")) 
 
             except ValueError:
                 print("NUMBER MUST BE 3 OR 4")
@@ -41,10 +41,7 @@ class Game:
             deck.deck_of_cards.pop()
 
 
-game = Game()
 
-for i in range(game.number_of_players):
-    print(game.list_of_players[i].cards)
 
 
 
