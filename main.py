@@ -1,4 +1,3 @@
-
 from game import Game
 from menu import Menu
 
@@ -16,6 +15,7 @@ def main():
         print()
         Show_players()
         print(f"\nPlayer '{game.list_of_players[i].name}' is playing")
+        print(f"\nCards from '{game.list_of_players[i].name}' is '{game.list_of_players[i].cards}' ")
         option = menu.show_options_and_choose()
         
         if option == 1:

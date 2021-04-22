@@ -10,4 +10,8 @@ class Deck:
         random.shuffle(self.deck_of_cards)
         return self.deck_of_cards
 
+    def out_of_play(self):
+        self.out_of_play=[]
+        return self.out_of_play
+        
 deck = Deck()
