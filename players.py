@@ -10,5 +10,4 @@ class Player:
         print("Cards: ")
         for i in self.cards:
             print(f"-{i}")
-
    

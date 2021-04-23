@@ -1,4 +1,3 @@
-
 from game import Game
 from menu import Menu
 
@@ -41,10 +40,5 @@ def main():
 
         else:
             pass
-        
-        
     
-
-    
-
 main()

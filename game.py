@@ -73,5 +73,4 @@ class Game:
             for j in self.list_of_players[i].banished_cards:
                 txt += j + " "
             print(f"Player {i+1}: {self.list_of_players[i].name}   Coins: {self.list_of_players[i].coins}   Banished cards: {txt}")
-        
-
+  
