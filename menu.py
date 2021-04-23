@@ -1,5 +1,9 @@
 from game import Game
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 94593e264f4ab4be9946da2691367f19087c6eb5
 class Menu:
 
     def __init__(self):
