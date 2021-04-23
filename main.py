@@ -79,6 +79,8 @@ def main():
                     print("You dont have enough money, try another option")
 
                 else:
+                    print("Choose the player you want to coup")
+                    print()
                     enemy = menu.select_enemy(game.list_of_players,i,game)
                     print()
                     print(f"Player '{enemy.name}', player '{game.list_of_players[i].name}' coups you")
@@ -89,13 +91,104 @@ def main():
                     turn = False
 
             elif option == 4:
-                pass
+                auxiliary_list = game.list_of_players[:]
+                auxiliary_list.pop(i)
+                challenger = menu.ask_for_challenge(auxiliary_list)
+
+                if challenger == False:
+                    game.list_of_players[i].coins += 3
+                    turn = False
+
+                else:
+                    if challenger.challenge(game.list_of_players[i],4) == False:
+                        print()
+                        print(f"Player '{game.list_of_players[i].name}' didnt have 'Duke', please player '{game.list_of_players[i].name}' delate one card")
+                        print()
+                        game.list_of_players[i].show_cards()
+                        print()
+                        game.lose_card(game.list_of_players[i])
+                        turn = False
+
+                    else:
+                        print()
+                        print(f"Player '{game.list_of_players[i].name}' had the 'Duke'")
+                        print("Replaceing the card %... Done")
+                        game.list_of_players[i].cards.remove("Duke")
+                        deck.deck_of_cards.append("Duke")
+                        deck.shuffle()
+                        game.list_of_players[i].cards.append(deck.deck_of_cards[-1])
+                        deck.deck_of_cards.pop()
+                        turn = False
 
             elif option == 5:
-                pass
+                if game.list_of_players[i].coins<3:
+                    print()
+                    print("You dont have enough money, try another option")
+
+                else:
+                    game.list_of_players[i].coins-=3
+                    auxiliary_list = game.list_of_players[:]
+                    auxiliary_list.pop(i)
+                    counteraction = menu.ask_for_counteraction(auxiliary_list)
+
+                    if counteraction == False:
+                        print()
+                        print("Choose the player you wanto to assassinate influence")
+                        print()
+                        enemy = menu.select_enemy(game.list_of_players,i,game)
+                        print()
+                        print(f"Player '{enemy.name}', player '{game.list_of_players[i].name}' wants to assassinate some of your influences")
+                        print()
+                        enemy.show_cards()
+                        print()
+                        game.lose_card(enemy)
+                        turn = False
+
+                    else:
+                        print()
+                        print(f"Player '{counteraction.name}' is counterattacking player '{game.list_of_players[i].name}'")
+                        auxiliary_list = game.list_of_players[:]
+                        auxiliary_list.remove(counteraction)
+                        print()
+                        challenger = menu.ask_for_challenge(auxiliary_list)
+
+                        if challenger == False:
+                            print()
+                            print(f"No one challenge player '{counteraction.name}', player '{game.list_of_players[i].name}' your action could not be performed")
+                            turn = False
+
+                        else:
+                            if challenger.challenge(counteraction,5) == False:
+                                print()
+                                print(f"Player '{counteraction.name}' didnt have 'Countness', please player '{counteraction.name}' delate one card")
+                                print()
+                                counteraction.show_cards()
+                                print()
+                                game.lose_card(counteraction)
+                                turn = False
+
+                            else:
+                                print()
+                                print(f"Player '{counteraction.name}' had the 'Countness'")
+                                print("Replaceing the card %... Done")
+                                counteraction.cards.remove("Countness")
+                                deck.deck_of_cards.append("Countness")
+                                deck.shuffle()
+                                counteraction.cards.append(deck.deck_of_cards[-1])
+                                deck.deck_of_cards.pop()
+                                turn = False
+
+
 
             elif option == 6:
-                pass
+                auxiliary_list = game.list_of_players[:]
+                auxiliary_list.pop(i)
+                challenger = menu.ask_for_challenge(auxiliary_list)
+
+                if challenger == False:
+                    game.list_of_players[i].coins += 3
+                    turn = False
+                
             
             elif option == 7:
                 pass

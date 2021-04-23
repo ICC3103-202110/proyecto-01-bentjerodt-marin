@@ -14,21 +14,34 @@ class Player:
     def challenge(self,player_challenged,action):
         if action == 1:
             pass
+
         elif action == 2:
             if "Duke" not in player_challenged.cards:
                 return False
             else:
                 return True
+
         elif action == 3:
             pass
+
         elif action == 4:
-            pass
+            if "Duke" not in player_challenged.cards:
+                return False
+            else:
+                return True
+
         elif action == 5:
-            pass
+            if "Countness" not in player_challenged.cards:
+                return False
+            else:
+                return True
+
         elif action == 6:
             pass
+
         elif action == 7:
             pass
+
         else:
             pass
 
