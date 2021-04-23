@@ -3,6 +3,7 @@ from menu import Menu
 from cards import deck
 import random
 
+
 def main():
     print()
     print("WELCOME TO $ COUP $")
