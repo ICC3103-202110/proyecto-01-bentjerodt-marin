@@ -39,17 +39,10 @@ class Game:
             self.list_of_players[i].cards.append(deck.deck_of_cards[-1])
             deck.deck_of_cards.pop()
 
-    def show_cards_of_player(self,player):
-        print(f"Your cards player {player.name}: ")
-        print()
-        for i in range(len(player.cards)):
-            
-            print(f"{i+1}) {player.cards[i]}")
-
     def lose_card(self,player):
         while True: 
             try:
-                select = int(input("Choose the card you want o drop: ")) 
+                select = int(input("Choose the card you want to drop: ")) 
 
             except ValueError:
                 print(f"NUMBER MUST BETWEEN 1 AND {len(player.cards)}")
@@ -61,7 +54,7 @@ class Game:
             else:
                 break
         
-        player.disabled_cards.append (player.cards[select-1])
+        player.banished_cards.append (player.cards[select-1])
         player.cards.pop(select-1)
 
     def show_info(self):
