@@ -1,9 +1,5 @@
 import random
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 94593e264f4ab4be9946da2691367f19087c6eb5
 class Deck:
 
     def __init__(self):
@@ -15,7 +11,3 @@ class Deck:
         return self.deck_of_cards
 
 deck = Deck()
-<<<<<<< HEAD
-=======
-deck = Deck()
->>>>>>> 94593e264f4ab4be9946da2691367f19087c6eb5

@@ -1,10 +1,6 @@
 from players import Player
 from cards import deck
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 94593e264f4ab4be9946da2691367f19087c6eb5
 class Game:
 
     def __init__(self):
