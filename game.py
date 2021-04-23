@@ -10,7 +10,6 @@ class Game:
         self.generate_players()
         self.deal_cards()
 
-
     def ask_n_players(self):
         while True: 
             try:
@@ -40,11 +39,39 @@ class Game:
             self.list_of_players[i].cards.append(deck.deck_of_cards[-1])
             deck.deck_of_cards.pop()
 
+    def show_cards_of_player(self,player):
+        print(f"Your cards player {player.name}: ")
+        print()
+        for i in range(len(player.cards)):
+            
+            print(f"{i+1}) {player.cards[i]}")
 
-game = Game()
+    def lose_card(self,player):
+        while True: 
+            try:
+                select = int(input("Choose the card you want o drop: ")) 
 
-for i in range(game.number_of_players):
-    print(game.list_of_players[i].cards)
+            except ValueError:
+                print(f"NUMBER MUST BETWEEN 1 AND {len(player.cards)}")
+                continue
 
+            if select<1 or select>len(player.cards):
+                print(f"NUMBER MUST BETWEEN 1 AND {len(player.cards)}")
+            
+            else:
+                break
+        
+        player.disabled_cards.append (player.cards[select-1])
+        player.cards.pop(select-1)
 
+    def show_info(self):
+        print("Global information")
+        print()
+        
+        for i in range(self.number_of_players):
+            txt = ""
+            for j in self.list_of_players[i].banished_cards:
+                txt += j + " "
+            print(f"Player {i+1}: {self.list_of_players[i].name}   Coins: {self.list_of_players[i].coins}   Banished cards: {txt}")
+        
 

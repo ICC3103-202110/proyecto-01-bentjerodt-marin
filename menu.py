@@ -28,20 +28,14 @@ class Menu:
         print()
         print("GENERAL ACTIONS")
         print("  1)Incomes")
-        print("  2)External help")
+        print("  2)Foreigne aid")
         print("  3)Coup")
         print("CHARACTER ACTIONS")
         print("  4)Duke-tax")
         print("  5)Assasinss-kill")
-        print("  6)Captain-extorsionate")
-        print("  7)Ambassador-change")
+        print("  6)Captain-steal")
+        print("  7)Ambassador-exchange")
         print()
         self.option=""
-
-    
-
-    
-menu = Menu()
-menu.show_options_and_choose()
-print(menu.option)
+        return self.option
 

@@ -3,11 +3,17 @@ from game import Game
 from menu import Menu
 
 def main():
+    print()
+    print("WELCOME TO $ COUP $")
+    print()
+
     game = Game()
     menu = Menu()
     tape = range(0,game.number_of_players)
 
     for i in tape:
+        print()
+        game.show_info()
         print()
         print(f"Player '{game.list_of_players[i].name}' is playing")
         option = menu.show_options_and_choose()
@@ -32,7 +38,7 @@ def main():
         
         elif option == 7:
             pass
-        
+
         else:
             pass
         
