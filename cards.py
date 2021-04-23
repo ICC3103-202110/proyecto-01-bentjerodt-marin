@@ -11,4 +11,3 @@ class Deck:
         return self.deck_of_cards
 
 deck = Deck()
-deck = Deck()
