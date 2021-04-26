@@ -17,14 +17,6 @@ class Player:
             print("YOU LOST")
         
 
-<<<<<<< HEAD
-    def challenge(self,player_challenged,action):
-        if action == 1:
-            pass
-        elif action == 2:
-            if "Duke" not in player_challenged.cards:
-                return False
-=======
     #============================={GENERAL ACTIONS}=============================#
     def incomes(self,game):
         self.coins+=1
@@ -46,7 +38,6 @@ class Player:
             if challenger == False:
                 game.log.append(f"-No ones challenge the counterattack of '{attacker.name}'")
                 pass
->>>>>>> bdf0d394712974805915d336c659d81e4597032a
             else:
                 challenge = game.challenge(challenger,attacker,"Duke")
                 if challenge == False:
@@ -106,17 +97,6 @@ class Player:
                 card = game.lose_card(enemy)
                 game.log.append(f"-No one counterattacks the play of '{self.name}' and the '{card}' of '{attacker.name}' dies in the Assassinate")
 
-<<<<<<< HEAD
-        elif action == 6:
-            if "Captain" not in player_challenged.cards:
-                return False
-            elif "Ambassador" not in player_challenged.cards:
-                return False
-            pass
-
-        elif action == 7:
-            pass
-=======
             else:
                 challenger2 = menu.ask_for(game.other_players(attacker),"challenge")
                 if challenger2 == False:
@@ -156,7 +136,6 @@ class Player:
                 enemy.show_cards()
                 print()
                 game.lose_card(enemy)
->>>>>>> bdf0d394712974805915d336c659d81e4597032a
 
     def captain_steal(self,game,menu):
         challenger = menu.ask_for(game.other_players(self),"challenge")
