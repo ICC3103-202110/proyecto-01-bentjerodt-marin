@@ -11,8 +11,5 @@ class Deck:
         return self.deck_of_cards
 
 deck = Deck()
-<<<<<<< HEAD
-=======
 
 
->>>>>>> d1d6145ad200afd33fc97f92200b1a04ca174af8

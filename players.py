@@ -129,12 +129,7 @@ class Player:
                 print()
                 enemy.show_cards()
                 print()
-<<<<<<< HEAD
-                card = game.lose_card(enemy)
-                
-=======
                 game.lose_card(enemy)
->>>>>>> d1d6145ad200afd33fc97f92200b1a04ca174af8
 
     def captain_steal(self,game,menu):
         challenger = menu.ask_for(game.other_players(self),"challenge")
