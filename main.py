@@ -178,16 +178,115 @@ def main():
                                 deck.deck_of_cards.pop()
                                 turn = False
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 03a8df9d20894b6fbf0b34a24f21f835ae10df76
             elif option == 6:
                 auxiliary_list = game.list_of_players[:]
                 auxiliary_list.pop(i)
                 challenger = menu.ask_for_challenge(auxiliary_list)
 
                 if challenger == False:
+<<<<<<< HEAD
                     game.list_of_players[i].coins += 3
                     turn = False
+=======
+                    counteraction = menu.ask_for_counteraction(auxiliary_list)
+                    if counteraction == False:
+                        print()
+                        print("Choose the player you wanto to steal coins")
+                        print()
+                        enemy = menu.select_enemy(game.list_of_players,i,game)
+                        print()
+                        print(f"Player '{enemy.name}', player '{game.list_of_players[i].name}' will steal your coins (max 2) ")
+                        print()
+                        if enemy.coins>=2:
+                            enemy.coins-=2
+                            game.list_of_players[i].coins+=2
+                            turn = False
+                        elif enemy.coins==1:
+                            enemy.coins-=1
+                            game.list_of_players[i].coins+=1
+                            turn = False
+                        else:
+                            turn = False
+                         
+                    else:
+                        auxiliary_list = game.list_of_players[:]
+                        auxiliary_list.remove(counteraction)
+                        challenger2 = menu.ask_for_challenge(auxiliary_list)
+                        if challenger2 == False:
+                            print()
+                            print(f"No one challenge, player '{game.list_of_players[i].name}' your action could not be performed")
+                            turn = False
+
+                        else: 
+                            if challenger2.challenge(counteraction,6) == False:
+                                print()
+                                print(f"Player '{counteraction.name}' didnt have 'Captain' or 'Ambassador', please player '{counteraction.name}' delate one card")
+                                print()
+                                counteraction.show_cards()
+                                print()
+                                game.lose_card(counteraction)
+                                turn = False
+
+                            else:
+                                print()
+                                print(f"Player '{counteraction.name}' had the 'Captain' or 'Ambassador")
+                                print("Replaceing the card %... Done")
+                                if "captain" in counteraction.cards:
+                                    counteraction.cards.remove("Captain")
+                                    deck.deck_of_cards.append("Captain")
+                                elif "Ambassador" in counteraction.cards:
+                                    counteraction.cards.remove("Ambassador")
+                                    deck.deck_of_cards.append("Ambassador")
+
+                                deck.shuffle()
+                                counteraction.cards.append(deck.deck_of_cards[-1])
+                                deck.deck_of_cards.pop()
+                                turn = False
+                else:
+                    if challenger.challenge(game.list_of_players[i],66) == False:
+                        print()
+                        print(f"Player '{game.list_of_players[i].name}' didnt have 'Captain', please player '{game.list_of_players[i].name}' delate one card")
+                        print()
+                        challenger.show_cards()
+                        print()
+                        game.lose_card(challenger)
+                        turn = False
+
+                    else:
+                        print()
+                        print(f"Player '{game.list_of_players[i].name}' had the 'Captain'")
+                        print("Replaceing the card %... Done")
+                        game.list_of_players[i].cards.remove("Captain")
+                        deck.deck_of_cards.append("Captain")
+                        deck.shuffle()
+                        game.list_of_players[i].cards.append(deck.deck_of_cards[-1])
+                        deck.deck_of_cards.pop()
+                        turn = False
+                        print()
+                        print("Choose the player you wanto to steal coins")
+                        print()
+                        enemy = menu.select_enemy(game.list_of_players,i,game)
+                        print()
+                        print(f"Player '{enemy.name}', player '{game.list_of_players[i].name}' will steal your coins (max 2) ")
+                        print()
+                        if enemy.coins>=2:
+                            enemy.coins-=2
+                            game.list_of_players[i].coins+=2
+                            turn = False
+                        elif enemy.coins==1:
+                            enemy.coins-=1
+                            game.list_of_players[i].coins+=1
+                            turn = False
+                        else:
+                            turn = False
+
+
+>>>>>>> 03a8df9d20894b6fbf0b34a24f21f835ae10df76
                 
             
             elif option == 7:
@@ -197,5 +296,8 @@ def main():
                 pass
     
 main()
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 03a8df9d20894b6fbf0b34a24f21f835ae10df76
