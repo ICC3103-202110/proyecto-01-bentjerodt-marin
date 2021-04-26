@@ -72,8 +72,10 @@ class Player:
                 self.coins+=3
 
     def assassin_assassinate(self,game,menu):
+        (f"-'{self.name}' plays 'Assassin assassinate'")
         challenger = menu.ask_for(game.other_players(self),"challenge")
         if challenger == False:
+            (f"-No one challenge the action of player'{self.name}'")
             attacker = menu.ask_for(game.other_players(self),"counterattack")
             if attacker == False:
                 self.coins-=3
@@ -87,10 +89,12 @@ class Player:
                 enemy.show_cards()
                 print()
                 card = game.lose_card(enemy)
+                game.log.append(f"-No one counterattack the action of player'{self.name}','{self.name}' assassinate te '{card}' of player '{enemy.name}'")
 
             else:
                 challenger2 = menu.ask_for(game.other_players(attacker),"challenge")
                 if challenger2 == False:
+                    game.log.append(f"-No one challenge the counterattack of '{attacker.name}','{self.name}' you lose 3 coins ant cant complete de action")
                     self.coins-=3
                 else:
                     challenge2 = game.challenge(challenger2,attacker,"Countness")
@@ -106,12 +110,14 @@ class Player:
                         enemy.show_cards()
                         print()
                         card = game.lose_card(enemy)
+                        game.log.append(f"-'{challenger2.name}' had the 'Countness' and wins the counterattack,'{self.name}' pays 3 coins and kill the'{card}' of '{enemy.name}'")
                     else:
-                        
+                        game.log.append(f"-'{challenger2.name}' didnt had the 'Countness' and lose the counterattack,'{self.name}' pays 3 coins but doesnt assasinnate any influences")
                         self.coins-=3
         else:
             challenge = game.challenge(challenger,self,"Assassin")
             if challenge == False:
+                game.log.append(f"-'{challenger.name}' challenge '{self.name}', and '{self.name}' loose win the challenge because he doesnt have the 'Assassin'")
                 pass
             else:
                 self.coins-=3
@@ -125,6 +131,8 @@ class Player:
                 enemy.show_cards()
                 print()
                 card = game.lose_card(enemy)
+                game.log.append(f"-'{challenger.name}' challenge '{self.name}', and '{self.name}'  win the challenge because he  have the 'Assassin'")
+                
                 
 
     def captain_steal(self,game,menu):

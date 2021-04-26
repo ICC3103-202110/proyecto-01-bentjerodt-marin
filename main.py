@@ -83,7 +83,6 @@ def main():
                 for j in game.log:
                     print(j)
                 print()
-                print("ATTENTION: INCOMPLETED ACTION ")
                 input("Press any key to continue: ")
 
         if len(tape) == 1:
