@@ -14,7 +14,7 @@ class Player:
     #============================={GENERAL ACTIONS}=============================#
     def incomes(self,game):
         self.coins+=1
-        game.log.append(f"-'{self.name}' gets 1 coin for incomes")
+        game.log.append(f"-'{self.name}' gets 1 coin from incomes")
         
 
     def foreigne_aid(self,game,menu,deck):
@@ -24,7 +24,7 @@ class Player:
             game.log.append(f"-No one counterattack the play of '{self.name}'")
             self.coins+=2
         else:
-            game.log.append(f"-'{attacker.name}' counterattacks to '{self.name} respect to the action 'foreigne aid'")
+            game.log.append(f"-'{attacker.name}' counterattacks to '{self.name}' respect to the action 'foreigne aid'")
             print()
             print(f"Player '{attacker.name}' is counterattacking player '{self.name}' with the 'Duke'")
             print()
@@ -73,9 +73,7 @@ class Player:
 
     def assassin_assassinate(self,game,menu):
         challenger = menu.ask_for(game.other_players(self),"challenge")
-        game.log.append(f"-'{self.name}' plays the 'Assassin'")
         if challenger == False:
-            game.log.append(f"-No one challenge the play of'{self.name}'")
             attacker = menu.ask_for(game.other_players(self),"counterattack")
             if attacker == False:
                 self.coins-=3
@@ -89,12 +87,10 @@ class Player:
                 enemy.show_cards()
                 print()
                 card = game.lose_card(enemy)
-                game.log.append(f"-No one counterattacks the play of '{self.name}' and the '{card}' of '{attacker.name}' dies in the Assassinate")
 
             else:
                 challenger2 = menu.ask_for(game.other_players(attacker),"challenge")
                 if challenger2 == False:
-                    game.log.append(f"-No one challenge the counterattack of '{attacker.name}' against the action of '{self.name}', lose 3 coins")
                     self.coins-=3
                 else:
                     challenge2 = game.challenge(challenger2,attacker,"Countness")
@@ -110,7 +106,6 @@ class Player:
                         enemy.show_cards()
                         print()
                         card = game.lose_card(enemy)
-                        game.log.append(f"-'{attacker.name}' have the 'Countness' and wins the challenge agains '{challenger.name}', the '{card}' of '{enemy.name}' dies in the Assassinate")
                     else:
                         
                         self.coins-=3
@@ -129,11 +124,14 @@ class Player:
                 print()
                 enemy.show_cards()
                 print()
-                game.lose_card(enemy)
+                card = game.lose_card(enemy)
+                
 
     def captain_steal(self,game,menu):
+        game.log.append(f"-'{self.name}' plays 'Captain steal'")
         challenger = menu.ask_for(game.other_players(self),"challenge")
         if challenger == False:
+            game.log.append(f"-No one challenge the play of '{self.name}'")
             attacker = menu.ask_for(game.other_players(self),"counterattack")
             if attacker == False:
                 print()
@@ -145,14 +143,19 @@ class Player:
                 if enemy.coins>=2:
                     enemy.coins-=2
                     self.coins+=2
+                    game.log.append(f"-No one counterattacker the play of '{self.name}', stealing 2 coin from '{enemy.name}'")
                 elif enemy.coins<2:
                     enemy.coins-=1
                     self.coins+=1
+                    game.log.append(f"-No one counterattacker the play of '{self.name}', stealing 1 coin from '{enemy.name}'")
                 else:
                     pass
+                
             else:
+                
                 challenger2 = menu.ask_for(game.other_players(attacker),"challenge")
                 if challenger2 == False:
+                    game.log.append(f"-No one challenge the counterattack of '{attacker.name}', '{self.name}' doesnt execute the action ")
                     pass
                 else:
                     challenge2 = game.challenge_for_2_cards(challenger2,attacker,"Ambassador","Captain")
@@ -169,13 +172,17 @@ class Player:
                         elif enemy.coins<2:
                             enemy.coins-=1
                             self.coins+=1
+                            game.log.append(f"-'{challenge2.names}' didnt have the 'Ambassador' or 'Duke' and lose the challenge, '{self.name}' stealing 2 coin from '{enemy.name}'")
                         else:
                             pass
                     else:
+                        game.log.append(f"-'{challenge2.names}' have the 'Ambassador' or 'Duke' and wins the challenge, '{self.name}' doesnt execute the action")
                         pass
         else:
+            game.log.append(f"-'{challenger.name}' challenge '{self.name}'")
             challenge = game.challenge(challenger,self,"Captain")
             if challenge == False:
+                game.log.append(f"-'{self.name}' didnt have the 'Ambassador', '{self.name}' lose the challenge and doesnt execute the action")
                 pass
             else:
                 print()
@@ -187,13 +194,16 @@ class Player:
                 if enemy.coins>=2:
                     enemy.coins-=2
                     self.coins+=2
+                    (f"-'{self.name}' have the 'Ambassador', '{self.name}' wins the challenge and doesnt change the cards")
                 elif enemy.coins<2:
                     enemy.coins-=1
                     self.coins+=1
+                    (f"-'{self.name}' have the 'Ambassador', '{self.name}' wins the challenge and doesnt change the cards")
                 else:
                     pass
 
     def ambassador_exchange(self,game,menu,deck):
+        game.log.append(f"-'{self.name}' plays 'Ambassador exchange'") 
         challenger = menu.ask_for(game.other_players(self),"challenge")
         if challenger == False:
             self.cards.append(deck.deck_of_cards[-1])
@@ -211,9 +221,12 @@ class Player:
             deck.deck_of_cards.append(card_1)
             deck.deck_of_cards.append(card_2)
             deck.shuffle()
+            game.log.append(f"No one challenge the play of '{self.name}','{self.name}'change the cards")
         else:
+            game.log.append(f"-'{challenger.name}' challenge the play of '{self.name}'")
             challenge = game.challenge(challenger,self,"Ambassador")
             if challenge == False:
+                game.log.append(f"-'{self.name}' didnt have the 'Ambassador', '{self.name}' lose the challenge and doesnt execute the action")
                 pass
             else:       
                 self.cards.append(deck.deck_of_cards[-1])
@@ -229,3 +242,4 @@ class Player:
                 deck.deck_of_cards.append(card_1)
                 deck.deck_of_cards.append(card_2)
                 deck.shuffle()
+                game.log.append(f"-'{self.name}' have the 'Ambassador', '{self.name}' wins the challenge and  execute thr action")
