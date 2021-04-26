@@ -14,7 +14,6 @@ def main():
     ponderation = 30
     tape = game.list_of_players*ponderation
     for i in tape:
-        print(f"len tape = {len(tape)}")
         actual_player = i
         print("______________________________________________________________")
         turn = True
