@@ -4,7 +4,7 @@ class Player:
         self.name = name
         self.cards = []
         self.banished_cards = []
-        self.coins = 2
+        self.coins = 100
 
     def show_cards(self):
         print("YOUR CARDS: ")
