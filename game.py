@@ -56,9 +56,12 @@ class Game:
             
             else:
                 break
-        
-        player.banished_cards.append (player.cards[select-1])
+    
+        card = player.cards[select-1]
+        player.banished_cards.append(card)
         player.cards.pop(select-1)
+        return card
+
 
     def show_info(self):
         print("Global information")
