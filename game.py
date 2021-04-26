@@ -10,6 +10,7 @@ class Game:
         self.generate_players()
         self.deal_cards()
         self.copy_of_list = self.list_of_players[:]
+        self.log = []
 
     def ask_n_players(self):
         while True: 

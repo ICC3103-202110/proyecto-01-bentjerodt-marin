@@ -13,10 +13,6 @@ def main():
     
     ponderation = 30
     tape = game.list_of_players*ponderation
-
-    for i in game.list_of_players:
-        print(i.show_cards())
-
     for i in tape:
         print(f"len tape = {len(tape)}")
         actual_player = i
@@ -33,12 +29,13 @@ def main():
             print()
             
             if option == 1:
-                actual_player.incomes()
+                actual_player.incomes(game)
                 input("Press any key to pass the turn: ")
                 turn = False
                 
             elif option == 2:
                 actual_player.foreigne_aid(game,menu,deck)
+                print()
                 input("Press any key to pass the turn: ")
                 turn = False
 
@@ -55,6 +52,7 @@ def main():
 
             elif option == 4:
                 actual_player.duke_tax(game,menu)
+                print()
                 input("Press any key to pass the turn: ")
                 turn = False
                 
@@ -71,13 +69,22 @@ def main():
 
             elif option == 6:
                 actual_player.captain_steal(game,menu)
+                print()
                 input("Press any key to pass the turn: ")
                 turn = False
 
-            else:
+            elif option == 7:
                 actual_player.ambassador_exchange(game,menu,deck)
+                print()
                 input("Press any key to pass the turn: ")
                 turn = False    
+
+            else: 
+                for j in game.log:
+                    print(j)
+                print()
+                print("ATTENTION: INCOMPLETED ACTION ")
+                input("Press any key to continue: ")
 
         if len(tape) == 1:
             print()

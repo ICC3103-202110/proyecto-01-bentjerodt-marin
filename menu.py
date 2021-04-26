@@ -1,5 +1,3 @@
-from game import Game
-
 class Menu:
 
     def __init__(self):
@@ -16,11 +14,11 @@ class Menu:
                 value = int(input("Choose an option: "))
 
             except ValueError:
-                print("NUMBER MUST BE BETWEEN 1 AND 7")
+                print("NUMBER MUST BE BETWEEN 1 AND 8")
                 continue
 
-            if value > 7 or value < 1:
-                print("NUMBER MUST BE BETWEEN 1 AND 7")
+            if value > 8 or value < 1:
+                print("NUMBER MUST BE BETWEEN 1 AND 8")
             else:
                 break
         self.__option = value
@@ -37,6 +35,8 @@ class Menu:
         print("  5)Assassin-assassinate")
         print("  6)Captain-steal")
         print("  7)Ambassador-exchange")
+        print("EXTRA ACTION")
+        print("  8)Log")
         print()
         self.option=""
         return self.option
