@@ -14,6 +14,7 @@ def main():
     ponderation = 30
     tape = game.list_of_players*ponderation
     for i in tape:
+        print(f"len tape = {len(tape)}")
         actual_player = i
         print("______________________________________________________________")
         turn = True
@@ -101,4 +102,8 @@ def main():
             print(f"CONGRATULATIONS PLAYER '{actual_player.name}' YOU ARE THE $ WINNER $ ")
             print()
             break
+<<<<<<< HEAD
 main()
+=======
+main()
+>>>>>>> d1d6145ad200afd33fc97f92200b1a04ca174af8
