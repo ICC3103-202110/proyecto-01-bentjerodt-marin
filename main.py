@@ -22,6 +22,7 @@ def main():
             print("______________________________________________________________")
             turn = True
             while turn:
+                
                 print()
                 game.show_info()
                 print()
@@ -200,7 +201,6 @@ def main():
                     auxiliary_list = game.list_of_players[:]
                     auxiliary_list.pop(i)
                     enemy = menu.select_enemy(game.list_of_players,i,game)
-
                     challenger = menu.ask_for_challenge(auxiliary_list)
                     
                     if challenger == False:
@@ -218,8 +218,43 @@ def main():
                     
                 
                 elif option == 7:
+                    cartas=[]
+                    print()
+                    cartas=deck.cards_exchange()
+                    for p in range(len(game.list_of_players[i].cards)):
+                        cartas.append(game.list_of_players[i].cards[p])
+                    print("DECK CARDS - YOUR CARDS ")
+                    for c in range(len(cartas)):
+                        print(f"{c+1}) {cartas[c]}")
+                    if len(game.list_of_players[i].cards)==1:
+                        print("\nSelect 1 of the 3 cards: ")
+                        elect=int(input())
+                        camb=cartas[elect-1]
+                        game.list_of_players[i].cards[0]=camb
+                        cartas.pop()
+                        for u in range(len(cartas)):
+                            deck.deck_of_cards.append(cartas[u])
+                        deck.shuffle()
+                        msn = f" Player {game.list_of_players[i].name} performs card exchange "
+                        game_turn.append(msn)
+                        turn = False   
 
-                    pass
+                    elif len(game.list_of_players[i].cards)==2:
+                        print("\nSelect 2 of the 4 cards: \n")
+                        c1=int(input("Select the first card: "))
+                        camb=cartas[c1-1]
+                        game.list_of_players[i].cards[0]=camb
+                        cartas.pop()
+                        c2=int(input("Select the second card: "))
+                        camb=cartas[c2-1]
+                        game.list_of_players[i].cards[1]=camb
+                        cartas.pop()
+                        for u in range(len(cartas)):
+                            deck.deck_of_cards.append(cartas[u])
+                        deck.shuffle()
+                        msn = f" Player {game.list_of_players[i].name} performs card exchange "
+                        game_turn.append(msn)
+                        turn = False
 
                 else:
                     pass

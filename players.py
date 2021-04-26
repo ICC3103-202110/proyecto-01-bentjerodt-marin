@@ -8,8 +8,14 @@ class Player:
 
     def show_cards(self):
         print("YOUR CARDS: ")
-        for i in range(len(self.cards)):
-            print(f"{i+1}) {self.cards[i]}")
+        if len(self.cards)==1:
+            print(f"{1}) {self.cards[0]}")
+        elif len(self.cards)==2:
+            for i in range(len(self.cards)):
+                print(f"{i+1}) {self.cards[i]}")
+        elif len(self.cards)==0:
+            print("YOU LOST")
+        
 
     def challenge(self,player_challenged,action):
         if action == 1:

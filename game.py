@@ -38,6 +38,7 @@ class Game:
             deck.deck_of_cards.pop()
             self.list_of_players[i].cards.append(deck.deck_of_cards[-1])
             deck.deck_of_cards.pop()
+    
 
     def lose_card(self,player):
         while True: 
