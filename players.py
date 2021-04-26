@@ -14,10 +14,6 @@ class Player:
     def challenge(self,player_challenged,action):
         if action == 1:
             pass
-<<<<<<< HEAD
-=======
-
->>>>>>> 03a8df9d20894b6fbf0b34a24f21f835ae10df76
         elif action == 2:
             if "Duke" not in player_challenged.cards:
                 return False
@@ -40,19 +36,7 @@ class Player:
                 return True
 
         elif action == 6:
-<<<<<<< HEAD
             pass
-=======
-            if ("Ambassador" not in player_challenged.cards) and ("Captain" not in player_challenged.cards):
-                return False
-            else:
-                return True
-        elif action == 66:
-            if "Captain" not in player_challenged.cards:
-                return False
-            else:
-                return True
->>>>>>> 03a8df9d20894b6fbf0b34a24f21f835ae10df76
 
         elif action == 7:
             pass
