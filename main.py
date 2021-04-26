@@ -216,6 +216,31 @@ def main():
                             game_turn.append(msn)
                         turn = False
                     
+                    else:
+                        if challenger.challenge(counteraction,6) == False:
+                            print()
+                            print(f"Player '{counteraction.name}' didnt have 'Captain' and didnt have 'Ambassador', please player '{counteraction.name}' delate one card")
+                            print()
+                            counteraction.show_cards()
+                            print()
+                            game.lose_card(counteraction)
+                            msn = f"Player '{counteraction.name}' lose influence in the challenge"
+                            game_turn.append(msn)                               
+                            turn = False
+
+                        #else:
+                     #      print()
+                      #     print(f"Player '{counteraction.name}' had the 'Captain' or 'Ambassador'")
+                  #         print("Replaceing the card %... Done")
+                            
+                   #        counteraction.cards.remove("Duke")
+                    #       deck.deck_of_cards.append("Duke")
+                     #      deck.shuffle()
+                    #       counteraction.cards.append(deck.deck_of_cards[-1])
+                       #    deck.deck_of_cards.pop()
+                        #   turn = False
+                        
+
                 
                 elif option == 7:
                     cartas=[]

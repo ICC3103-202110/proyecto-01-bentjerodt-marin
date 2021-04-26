@@ -42,6 +42,10 @@ class Player:
                 return True
 
         elif action == 6:
+            if "Captain" not in player_challenged.cards:
+                return False
+            elif "Ambassador" not in player_challenged.cards:
+                return False
             pass
 
         elif action == 7:
