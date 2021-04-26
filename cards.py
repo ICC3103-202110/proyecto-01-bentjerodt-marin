@@ -15,6 +15,7 @@ class Deck:
         random.shuffle(self.deck_of_cards)
         return self.deck_of_cards
 
+<<<<<<< HEAD
     def cards_exchange(self):
         self.exchange=[]
         x=1
@@ -26,3 +27,6 @@ class Deck:
         return self.exchange
 
 deck = Deck()
+=======
+deck = Deck()
+>>>>>>> bdf0d394712974805915d336c659d81e4597032a

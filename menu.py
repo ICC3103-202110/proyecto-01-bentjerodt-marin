@@ -1,5 +1,3 @@
-from game import Game
-
 class Menu:
 
     def __init__(self):
@@ -16,11 +14,11 @@ class Menu:
                 value = int(input("Choose an option: "))
 
             except ValueError:
-                print("NUMBER MUST BETWEEN 1 AND 7")
+                print("NUMBER MUST BE BETWEEN 1 AND 8")
                 continue
 
-            if value > 7 or value < 1:
-                print("NUMBER MUST BETWEEN 1 AND 7")
+            if value > 8 or value < 1:
+                print("NUMBER MUST BE BETWEEN 1 AND 8")
             else:
                 break
         self.__option = value
@@ -34,22 +32,24 @@ class Menu:
         print("  3)Coup")
         print("CHARACTER ACTIONS")
         print("  4)Duke-tax")
-        print("  5)Assasinss-kill")
+        print("  5)Assassin-assassinate")
         print("  6)Captain-steal")
         print("  7)Ambassador-exchange")
+        print("EXTRA ACTION")
+        print("  8)Log")
         print()
         self.option=""
         return self.option
 
-    def ask_for_counteraction(self,list_of_players):
-        txt = input("Any player wants to counterattack? y/n: ")
+    def ask_for(self,list_of_players,action):
+        txt = input(f"Any player wants to {action}? y/n: ")
         if  txt != str("y") and txt != str("n"):
             while txt != str("y") and txt != str("n"):
-                txt = input("Any player wants to counterattack? y/n: ")
+                txt = input(f"Any player wants to {action}? y/n: ")
 
         if txt == "y":
             print()
-            print("Which player wants to counterattack?")
+            print(f"Which player wants to {action}?")
             print()
             for i in range(len(list_of_players)):
                 print(f"{i+1}) {list_of_players[i].name}")
@@ -57,60 +57,26 @@ class Menu:
             print()
             while True:
                 try:
-                    option = int(input("Choose a player: "))
+                    optioN = int(input("Choose a player: "))
 
                 except ValueError:
-                    print(f"NUMBER MUST BETWEEN 1 AND {len(list_of_players)}")
+                    print(f"NUMBER MUST BE BETWEEN 1 AND {len(list_of_players)}")
                     continue
 
-                if option > len(list_of_players) or option < 1:
-                    print(f"NUMBER MUST BETWEEN 1 AND {len(list_of_players)}")
+                if optioN > len(list_of_players) or optioN < 1:
+                    print(f"NUMBER MUST BE BETWEEN 1 AND {len(list_of_players)}")
                 else:
                     break
             
-            return list_of_players[option-1]
+            return list_of_players[optioN-1]
 
         elif txt == "n":
             return False
 
-    def ask_for_challenge(self,list_of_players):
-        txt = input("Any player wants to challenge? y/n: ")
-        if  txt != str("y") and txt != str("n"):
-            while txt != str("y") and txt != str("n"):
-                txt = input("Any player wants to challenge? y/n: ")
+    def select_enemy(self,list_of_players):
 
-        if txt == "y":
-            print()
-            print("Which player wants to challenge?")
-            print()
-            for i in range(len(list_of_players)):
-                print(f"{i+1}) {list_of_players[i].name}")
-
-            print()
-            while True:
-                try:
-                    option = int(input("Choose a player: "))
-
-                except ValueError:
-                    print(f"NUMBER MUST BETWEEN 1 AND {len(list_of_players)}")
-                    continue
-
-                if option > len(list_of_players) or option < 1:
-                    print(f"NUMBER MUST BETWEEN 1 AND {len(list_of_players)}")
-                else:
-                    break
-            
-            return list_of_players[option-1]
-
-        elif txt == "n":
-            return False
-
-    def select_enemy(self,list_of_players,actual_player,machine):
-        auxiliary_list = machine.list_of_players[:]
-        auxiliary_list.pop(actual_player)
-
-        for i in range(len(auxiliary_list)):
-            print(f"{i+1}) {auxiliary_list[i].name}")
+        for i in range(len(list_of_players)):
+            print(f"{i+1}) {list_of_players[i].name}")
 
         print()
         while True:
@@ -118,12 +84,12 @@ class Menu:
                 optioN= int(input("Select a player: "))
 
             except ValueError:
-                print(f"NUMBER MUST BETWEEN 1 AND {len(auxiliary_list)}")
+                print(f"NUMBER MUST BETWEEN 1 AND {len(list_of_players)}")
                 continue
 
             if optioN > len(list_of_players) or optioN < 1:
-                print(f"NUMBER MUST BETWEEN 1 AND {len(auxiliary_list)}")
+                print(f"NUMBER MUST BETWEEN 1 AND {len(list_of_players)}")
             else:
                 break
 
-        return auxiliary_list[optioN-1]
+        return list_of_players[optioN-1]
